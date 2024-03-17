@@ -60,7 +60,6 @@ const SignInPage: React.FC = ({}) => {
     },
     onSuccess: () => {
       toast.success("Signed in successfully!");
-      router.refresh();
 
       if (origin) {
         router.push(`/${origin}`);
@@ -73,6 +72,7 @@ const SignInPage: React.FC = ({}) => {
       }
 
       router.push("/");
+      router.refresh();
     },
   });
 
