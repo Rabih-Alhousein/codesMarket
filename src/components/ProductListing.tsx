@@ -37,7 +37,7 @@ const ProductListing: React.FC<ProductListingProps> = ({ product, index }) => {
   if (isVisible && product) {
     return (
       <Link
-        className={cn("invisible h-full w-full cursor-pointer group/main", {
+        className={cn("invisible h-full w-full cursor-pointer", {
           "visible animate-in fade-in-5": isVisible,
         })}
         href={`/product/${product.id}`}
