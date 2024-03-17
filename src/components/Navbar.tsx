@@ -5,11 +5,13 @@ import { Icons } from "./Icons";
 import NavItems from "./NavItems";
 import { buttonVariants } from "./ui/button";
 import Cart from "./Cart";
+import { cookies } from "next/headers";
+import { getServerSideUser } from "@/lib/payload-utils";
+import UserAccountNav from "./UserAccountNav";
 
-interface NavbarProps {}
-
-const Navbar: React.FC<NavbarProps> = ({}) => {
-  const user = null;
+const Navbar: React.FC = async ({}) => {
+  const nextCookies = cookies();
+  const { user } = await getServerSideUser(nextCookies);
 
   const NavDivider = () => (
     <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
@@ -47,7 +49,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
                   {user ? null : <NavDivider />}
 
                   {user ? (
-                    <p> </p>
+                    <UserAccountNav user={user} />
                   ) : (
                     <Link
                       href="/sign-up"
