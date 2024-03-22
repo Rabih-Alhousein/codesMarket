@@ -56,6 +56,7 @@ const Page: React.FC<PageProps> = async ({ params }) => {
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           {/* Product Details */}
           <div className="lg:max-w-lg lg:self-end">
+            {/* BreadCrumbs */}
             <ol className="flex items-center space-x-2">
               {BREADCRUMBS.map((breadcrumb, i) => (
                 <li key={breadcrumb.href}>
@@ -81,8 +82,9 @@ const Page: React.FC<PageProps> = async ({ params }) => {
               ))}
             </ol>
 
+            {/* Product details */}
             <div className="mt-4">
-              <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">
                 {product.name}
               </h1>
             </div>
