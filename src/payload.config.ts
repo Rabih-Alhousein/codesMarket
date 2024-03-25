@@ -23,9 +23,9 @@ export default buildConfig({
   admin: {
     bundler: webpackBundler(),
     meta: {
-      titleSuffix: "- DigitalHippo",
+      titleSuffix: "- Codesmarket",
       favicon: "/favicon.ico",
-      ogImage: "/thumbnail.jpg",
+      ogImage: "/thumbnail.png",
     },
   },
   rateLimit: {

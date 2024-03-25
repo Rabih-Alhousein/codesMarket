@@ -23,11 +23,11 @@ const Navbar: React.FC = async ({}) => {
       <header className="relative bg-white">
         <MaxWidthWrapper>
           <div className="border-b border-gray-200">
-            <div className="flex h-16 items-center">
+            <div className="flex h-[66px] items-center">
               <MobileNav />
               <div className="ml-4 flex lg:ml-0">
                 <Link href="/">
-                  <Icons.logo className="h-10 w-10" />
+                  <Icons.logoImage width={55} height={55} />
                 </Link>
               </div>
               <div className="hidden z-50 lg:ml-8 lg:block lg:self-stretch">

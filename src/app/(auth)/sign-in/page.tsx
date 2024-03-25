@@ -10,14 +10,14 @@ import Link from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";
 
-import { trpc } from "@/trpc/client";
 import {
   AuthCredentialsValidator,
   TAuthCredentialsValidator,
 } from "@/lib/validators/account-credentials-validator";
+import { trpc } from "@/trpc/client";
+import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 import { ZodError } from "zod";
-import { useRouter, useSearchParams } from "next/navigation";
 
 const SignInPage: React.FC = ({}) => {
   const searchParams = useSearchParams();
@@ -84,7 +84,7 @@ const SignInPage: React.FC = ({}) => {
     <div className="container relative flex pt-20 flex-col items-center justify-center lg:px-0">
       <div className=" flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
         <div className="flex flex-col items-center space-y-2 text-center">
-          <Icons.logo className="h-20 w-20" />
+          <Icons.logoImage width={120} height={120} />
           <h1 className="text-2xl font-bold">
             Sign in to your {isSeller && "seller"} account
           </h1>

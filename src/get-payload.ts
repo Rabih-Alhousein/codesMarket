@@ -9,12 +9,14 @@ dotenv.config({
 });
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.resend.com",
-  secure: true,
-  port: 465,
+  host: "smtp-mail.outlook.com",
+  service: "gmail",
+  requireTLS: true,
+  secure: false,
+  port: 578,
   auth: {
-    user: "resend",
-    pass: process.env.RESEND_API_KEY,
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASSWORD,
   },
 });
 
@@ -46,8 +48,8 @@ export const getPayloadClient = async ({
     cached.promise = payload.init({
       email: {
         transport: transporter,
-        fromAddress: "hello@joshtriedcoding.com",
-        fromName: "DigitalHippo",
+        fromAddress: "rabih.alhousein@gmail.com",
+        fromName: "Rabih Al Houssein",
       },
       secret: process.env.PAYLOAD_SECRET,
       local: initOptions?.express ? false : true,

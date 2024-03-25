@@ -53,7 +53,7 @@ const Page: React.FC<PageProps> = async ({ params }) => {
   return (
     <MaxWidthWrapper className="bg-white">
       <div className="bg-white">
-        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+        <div className="mx-auto max-w-2xl px-2 py-16 sm:py-24 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-4 lg:px-4">
           {/* Product Details */}
           <div className="lg:max-w-lg lg:self-end">
             {/* BreadCrumbs */}
@@ -120,13 +120,13 @@ const Page: React.FC<PageProps> = async ({ params }) => {
 
           {/* Product images */}
           <div className="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
-            <div className="aspect-square rounded-lg">
+            <div className="rounded-lg">
               <ImageSlider urls={validUrls} />
             </div>
           </div>
 
           {/* add to cart part */}
-          <div className="mt-10 lg:col-start-1 lg:row-start-2 lg:max-w-lg lg:self-start">
+          <div className="mt-6 lg:col-start-1 lg:row-start-2 lg:max-w-lg lg:self-start">
             <div>
               <div className="mt-10">
                 <AddToCartButton product={product} />

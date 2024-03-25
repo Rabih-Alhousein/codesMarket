@@ -51,8 +51,6 @@ const SignUpPage: React.FC = ({}) => {
     },
   });
 
-  // console.log({ data });
-
   const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {
     mutate({ email, password });
   };
@@ -61,7 +59,7 @@ const SignUpPage: React.FC = ({}) => {
     <div className="container relative flex pt-20 flex-col items-center justify-center lg:px-0">
       <div className=" flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
         <div className="flex flex-col items-center space-y-2 text-center">
-          <Icons.logo className="h-20 w-20" />
+          <Icons.logoImage width={120} height={120} />
           <h1 className="text-2xl font-bold">Create an account</h1>
 
           <Link

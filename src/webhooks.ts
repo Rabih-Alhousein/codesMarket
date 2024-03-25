@@ -1,13 +1,23 @@
 import express from "express";
-import { WebhookRequest } from "./server";
-import { stripe } from "./lib/stripe";
+import nodemailer from "nodemailer";
 import type Stripe from "stripe";
-import { getPayloadClient } from "./get-payload";
-import { Product } from "./payload-types";
-import { Resend } from "resend";
 import { ReceiptEmailHtml } from "./components/emails/ReceiptEmail";
+import { getPayloadClient } from "./get-payload";
+import { stripe } from "./lib/stripe";
+import { Product } from "./payload-types";
+import { WebhookRequest } from "./server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const transporter = nodemailer.createTransport({
+  host: "smtp-mail.outlook.com",
+  service: "gmail",
+  requireTLS: true,
+  secure: false,
+  port: 578,
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASSWORD,
+  },
+});
 
 export const stripeWebhookHandler = async (
   req: express.Request,
@@ -83,22 +93,27 @@ export const stripeWebhookHandler = async (
     });
 
     // send receipt
-    try {
-      const data = await resend.emails.send({
-        from: "DigitalHippo <hello@joshtriedcoding.com>",
-        to: [user.email],
-        subject: "Thanks for your order! This is your receipt.",
-        html: ReceiptEmailHtml({
-          date: new Date(),
-          email: user.email,
-          orderId: session.metadata.orderId,
-          products: order.products as Product[],
-        }),
-      });
-      res.status(200).json({ data });
-    } catch (error) {
-      res.status(500).json({ error });
-    }
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: user.email,
+      subject: "Thanks for your order! This is your receipt.",
+      html: ReceiptEmailHtml({
+        date: new Date(),
+        email: user.email,
+        orderId: session.metadata.orderId,
+        products: order.products as Product[],
+      }),
+    };
+
+    transporter.sendMail(mailOptions, (error, data) => {
+      if (error) {
+        res.status(500).json({ error });
+      } else {
+        res.status(200).json({
+          data,
+        });
+      }
+    });
   }
 
   return res.status(200).send();

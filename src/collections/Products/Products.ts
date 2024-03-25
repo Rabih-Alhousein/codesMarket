@@ -108,9 +108,7 @@ export const Products: CollectionConfig = {
 
           return updated;
         } else if (args.operation === "update") {
-          console.log("here we are");
           const data = args.data as Product;
-          console.log(data);
           const updatedProduct = await stripe.products.update(data.stripeId!, {
             name: data.name,
             default_price: data.priceId!,
@@ -147,13 +145,13 @@ export const Products: CollectionConfig = {
     {
       name: "description",
       type: "textarea",
-      label: "Proudct details",
+      label: "Product details",
     },
     {
       name: "price",
       label: "Price in USD",
       min: 0,
-      max: 1000,
+      max: 10000,
       type: "number",
       required: true,
     },

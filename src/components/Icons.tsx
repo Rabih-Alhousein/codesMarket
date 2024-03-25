@@ -1,4 +1,5 @@
 import { LucideProps } from "lucide-react";
+import Image from "next/image";
 
 export const Icons = {
   logo: (props: LucideProps) => (
@@ -85,5 +86,13 @@ export const Icons = {
         ></path>
       </g>
     </svg>
+  ),
+  logoImage: ({ width, height }: { width: number; height: number }) => (
+    <Image
+      src="/logo.png"
+      alt="codeMarketplace"
+      width={width}
+      height={height}
+    />
   ),
 };

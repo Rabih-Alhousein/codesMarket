@@ -68,8 +68,6 @@ export const paymentRouter = router({
           line_items,
         });
 
-        console.log({ stripeSession });
-
         return { url: stripeSession.url };
       } catch (err) {
         console.log(err);

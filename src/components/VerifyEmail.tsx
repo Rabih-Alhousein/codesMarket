@@ -16,8 +16,6 @@ const VerifyEmail: React.FC<VerifyEmailProps> = ({ token }) => {
     token,
   });
 
-  console.log({ data, isError });
-
   if (isError) {
     return (
       <div className="flex flex-col items-center gap-2">
@@ -46,7 +44,7 @@ const VerifyEmail: React.FC<VerifyEmailProps> = ({ token }) => {
     return (
       <div className="flex h-full flex-col items-center justify-center">
         <div className="relative mb-4 h-60 w-60 text-muted-foreground">
-          <Image src="/hippo-email-sent.png" fill alt="the email was sent" />
+          <Image src="/emailsent.jpg" fill alt="the email was sent" />
         </div>
 
         <h3 className="font-semibold text-2xl">You&apos;re all set!</h3>
