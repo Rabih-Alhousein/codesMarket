@@ -58,7 +58,7 @@ export function constructMetadata({
       creator: "@joshtriedcoding",
     },
     icons,
-    metadataBase: new URL("https://Codesmarket.up.railway.app"),
+    metadataBase: new URL("https://codesmarket.onrender.com"),
     ...(noIndex && {
       robots: {
         index: false,
