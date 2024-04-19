@@ -96,7 +96,7 @@ const SignUpPage: React.FC = ({}) => {
                   className={cn({
                     "focus-visible:ring-red-500": errors.password,
                   })}
-                  placeholder="you@example.com"
+                  placeholder="Password"
                   type="Password"
                 />
                 {errors.password && (
